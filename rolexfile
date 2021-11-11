@@ -1,0 +1,60 @@
+It contains the following:
+
+        NigeriaMRS-HTS
+            --the NMRS Standalone directory
+
+        com.google.android.gms_v21.09.15_(000300-361652764)-210915000_Android-4.1.apk
+            --a google play service for android you need to install on the mobile device
+
+        com.google.android.gms_21.12.13_(040400-367530751)-211213019_minAPI23(arm64-v8a,armeabi-v7a)(nodpi)_apkmirror.com.apk
+            --a second Google android service you need to install on the mobile device after installing v21.09.15 above
+
+        NMRS_MOBILE.apk
+            --The NMRS Mobile App to be installed on the mobile device
+
+        LGA-DATIM-Codes.xlsx
+            --the spreadsheet containing list of LGAs and corresponding DATIM codes
+
+Extract the package and move NigeriaMRS-HTS to the Desktop. Start by using run-on-unix.sh as usual.
+
+NMRS and SYSTEM Setup:
+Go to System Administration > Manage Global properties and set:
+
+        Facility_Name = LGA name as in LGA-DATIM-Codes.xlsx above
+        facility_datim_code = LGA DATIM CODE as in LGA-DATIM-Codes.xlsx above
+        facility_local_id = LGA DATIM CODE as in LGA-DATIM-Codes.xlsx above
+        nigeria_qual_id = LGA DATIM CODE as in LGA-DATIM-Codes.xlsx above (optional)
+
+Go to System Administration > Advanced Administration > Manage Locations:
+
+        check Admission Location, Login Location, Transfer Location and Visit Location for only the location named after the LGA where the instance is deployed.
+            NOTE some LGAs are not in the LGA-DATIM-Codes.xlsx above therefore no DATIM CODE is availabe for such at the moment. (I used the nearest LGA name and DATIM code till further notice)
+
+Wireless networking:
+
+    For sites without a wireless router (the majority) we deploy the solution using Linux WiFi- Hotspot with a server iPv4 address of 192.168.0.1 and a unique Hotspot name preferably the facility's name.
+
+        To change hotspot settings, start Terminal and issue the following command:
+            nm-connection-editor
+
+        double click Hotspot to open its settings dialogue box
+
+            Edit connection name to facility name  (DELTA_VICTORY-2021)
+        under Wi-Fi edit SSID to match facility name
+             
+            under IPv4 settings click the Add button to add an IP address
+            set Address to 192.168.0.1
+            set Netmask to 24 and leave Gateway empty
+            Save
+
+Mobile Device Setup:
+We already have the App shared on our Delta O&E Forum and HI for ease of access.
+You can install the app before the services or vice-versa.
+However, make sure you install 
+com.google.android.gms_v21.09.15_(000300-361652764)-210915000_Android-4.1.apk  before installing com.google.android.gms_21.12.13_(040400-367530751)-211213019_minAPI23(arm64-v8a,armeabi-v7a)(nodpi)_apkmirror.com.apk.
+
+
+
+Alhassan Danjuma
+
+PO, Health Informatics
